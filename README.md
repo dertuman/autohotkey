@@ -1,5 +1,5 @@
 # autohotkey
-Useful Autohotkey scripts. Autohotkey is a software that allows you to map actions based on keyboard or mouse events, automate, and much more, using it's own language and paradigms. More info: https://www.autohotkey.com/
+Useful Autohotkey scripts. AutoHotkey is a free, open-source scripting language for Windows that allows users to easily create small to complex scripts for all kinds of tasks such as: form fillers, auto-clicking, macros, etc. More info: https://www.autohotkey.com/
 
 # List of available scripts
 
