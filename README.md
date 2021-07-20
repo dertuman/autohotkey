@@ -7,4 +7,4 @@ Useful Autohotkey scripts. AutoHotkey is a free, open-source scripting language 
 A script that enables de usage of arrow keys when caps lock is pressed. The keys jkli, become left, down, right, up, respectively. It also contains many useful commands for moving around text, copying, selecting, etc. 
 
 # SetBrightnessScript.ahk
-Enables changing screen brightness depending on the focused application. Useful to use with vs code to increase the brightness when viewing it (I use dark mode), and when alt-tabbing to another window that has a lot of white, reducing brightness to avoid eye strain. 
+Enables changing screen brightness depending on the focused application. Useful to use with vs code to increase the brightness when viewing it (I use dark mode), and when alt-tabbing to another window that has a lot of white, reducing brightness to avoid eye strain. Using ClickMonitorDDC. 
