@@ -1,4 +1,4 @@
-# autohotkey
+# Autohotkey
 Useful Autohotkey scripts. AutoHotkey is a free, open-source scripting language for Windows and MacOS that allows users to easily create small to complex scripts for all kinds of tasks such as: form fillers, auto-clicking, macros, etc. More info: https://www.autohotkey.com/
 
 # List of available scripts
