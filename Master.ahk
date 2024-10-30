@@ -2,22 +2,22 @@
 
 ScriptStat := false
 ^+s::
-	Suspend	; Make this hotkey immune to suspend, so it can Un-Suspend
-	If ScriptStat
-	{
-		ScriptStat := false
-		Tooltip, ACTIVE
+  Suspend	; Make this hotkey immune to suspend, so it can Un-Suspend
+  If ScriptStat
+  {
+    ScriptStat := false
+    Tooltip, ACTIVE
     Sleep, 300
     Tooltip
-		Suspend, Off
-	} else {
-		ScriptStat := true
-		Tooltip, SUSPENDED
+    Suspend, Off
+  } else {
+    ScriptStat := true
+    Tooltip, SUSPENDED
     Sleep, 300
     Tooltip
   }
 
-;This converts the jkli into alt hotkeys without the need to toggle. 
+;This converts the jkli into alt hotkeys without the need to toggle.
 ;#: Windows
 ;!: Alt
 ;+:Shift
@@ -42,12 +42,12 @@ ScriptStat := false
 ; Middle mouse button is enter in visual studio code
 MButton::gosub, RemapMButon
 RemapMButon:
-IfWinActive, ahk_exe Code.exe
-{
-  Send, {Enter}
-  Return
-}
-send, {MButton}
+  IfWinActive, ahk_exe Code.exe
+  {
+    Send, {Enter}
+    Return
+  }
+  send, {MButton}
 
 ; ~CapsLock::
 ; KeyWait, CapsLock
@@ -73,39 +73,83 @@ send, {MButton}
 
 CapsLock & i::
   If GetKeyState("Shift", "P")
-		send +{up}  
-	Else If GetKeyState("CapsLock", "P")  ; For some reason only one of these is needed to prevent unwanted firing. (Check else statement before "send {left}": Doesn't have it)
-        ; SetCapsLockState, Off
-		send {up}
+    send +{up}
+  Else If GetKeyState("CapsLock", "P")  ; For some reason only one of these is needed to prevent unwanted firing. (Check else statement before "send {left}": Doesn't have it)
+    ; SetCapsLockState, Off
+    send {up}
+return
+
+F23 & i::
+  If GetKeyState("Shift", "P")
+    send +{up}
+  Else
+    send {up}
 return
 
 CapsLock & j::
   If (GetKeyState("Control", "P") && GetKeyState("Shift", "P"))
-  	send +^{left}
+    send +^{left}
   Else If GetKeyState("Alt", "P")
-    send ^{Left}  
+    send ^{left}
   Else If GetKeyState("Shift", "P")
-		send +{left}
-	Else 
-		send {left}
+    send +{left}
+  Else If GetKeyState("Control", "P")
+    send ^{left}
+  Else
+    send {left}
+return
+
+F23 & j::
+  If (GetKeyState("Control", "P") && GetKeyState("Shift", "P"))
+    send +^{left}
+  Else If GetKeyState("Alt", "P")
+    send ^{left}
+  Else If GetKeyState("Shift", "P")
+    send +{left}
+  Else If GetKeyState("Control", "P")
+    send ^{left}
+  Else
+    send {left}
 return
 
 CapsLock & k::
-	If GetKeyState("Shift", "P")
-		send +{down}
+  If GetKeyState("Shift", "P")
+    send +{down}
   Else If GetKeyState("CapsLock", "P")
+    send {down}
+return
+
+F23 & k::
+  If GetKeyState("Shift", "P")
+    send +{down}
+  Else
     send {down}
 return
 
 CapsLock & l::
   If (GetKeyState("Control", "P") && GetKeyState("Shift", "P"))
-  	send +^{right}
+    send +^{right}
   Else If GetKeyState("Alt", "P")
-    send ^{Right}  
+    send ^{right}
   Else If GetKeyState("Shift", "P")
-		send +{right}
-	Else 
-		send {right}
+    send +{right}
+  Else If GetKeyState("Control", "P")
+    send ^{right}
+  Else
+    send {right}
+return
+
+F23 & l::
+  If (GetKeyState("Control", "P") && GetKeyState("Shift", "P"))
+    send +^{right}
+  Else If GetKeyState("Alt", "P")
+    send ^{right}
+  Else If GetKeyState("Shift", "P")
+    send +{right}
+  Else If GetKeyState("Control", "P")
+    send ^{right}
+  Else
+    send {right}
 return
 
 CapsLock & g::
@@ -123,54 +167,74 @@ CapsLock & t::
 return
 
 CapsLock & n::
-  If GetKeyState("CapsLock", "T") = 1 
+  If GetKeyState("CapsLock", "T") = 1
     send {ñ}
   Else If GetKeyState("CapsLock", "T") = 0
     send {Ñ}
 return
 
 CapsLock & /::
-    send {¿}
+  send {¿}
 return
 
 CapsLock & 1::
-    send {¡}
+  send {¡}
 return
 
 ; Alt tab configurations
 LShift & Right::AltTab
 LShift & Left::ShiftAltTab
 
-; For google chrome developer tools quick access 
+F23 & Right::AltTab
+F23 & Left::ShiftAltTab
+
+; For google chrome developer tools quick access
 ~LButton & RButton::
   send ^+{c}
-return  
+return
+
+; For google chrome developer tools responsive mode quick access (must have devtools focused)
+~RButton & LButton::
+  send ^+{m}
+return
 
 ; Undo
-CapsLock & z:: 
+CapsLock & z::
   send ^{z}
 return
 
 ; Undo
-CapsLock & y:: 
+CapsLock & y::
   send ^{y}
 return
 
 ; Select all
-CapsLock & a:: 
+CapsLock & a::
   send ^{a}
 return
-  
+
 ; Copy paste actions
 CapsLock & c::
   send ^{c}
 return
 
+F23 & c::
+  send ^{c}
+return
+
 CapsLock & x::
   send ^{x}
-return 
+return
+
+F23 & x::
+  send ^{x}
+return
 
 CapsLock & v::
+  send ^{v}
+return
+
+F23 & v::
   send ^{v}
 return
 
@@ -178,11 +242,23 @@ CapsLock & 2::
   send ^{2}
 return
 
+F23 & 2::
+  send ^{2}
+return
+
 CapsLock & 3::
   send ^{3}
 return
 
+F23 & 3::
+  send ^{3}
+return
+
 CapsLock & 4::
+  send ^{4}
+return
+
+F23 & 4::
   send ^{4}
 return
 
@@ -195,13 +271,28 @@ CapsLock & r::
   send ^{r}
 return
 
-; Search  
+; Refresh the browser
+F23 & r::
+  send ^{r}
+return
+
+; Search
 CapsLock & f::
   send ^{f}
 return
 
-; Select duplicate  
+; Search
+F23 & f::
+  send ^{f}
+return
+
+; Select duplicate
 CapsLock & d::
+  send ^{d}
+return
+
+; Select duplicate
+F23 & d::
   send ^{d}
 return
 
@@ -210,14 +301,27 @@ Capslock & h::
   send ^{h}
 return
 
-; Ctrl+alt+`
-; Used to jump through breakpoints in VSCode (this shortcut must also be set in vs code in "keybindings.json") 
+; Go to next breakpoint in vs code
 CapsLock & q::
-  send ^!{x}
+  send !{e}
 return
 
+F22::gosub, OpenDevTools
+OpenDevTools:
+  IfWinActive, ahk_exe Code.exe
+  {
+    ; Go to next breakpoint in vs code
+    send ^!{e}
+    return
+  }
+  if WinExist("DevTools")
+    WinActivate
+return
 
-
+; Write console.log({
+CapsLock & u::
+  Send {Text}console.log({
+return
 
 ; ; If caps lock is toggled, send these hotkeys
 ; #If (toggle=1)
@@ -285,9 +389,8 @@ return
 ;     WinMove, ahk_id %TTHWND%,,% x+10,% y+20
 ;     Return
 
-
 ; Make sure capslock is always in the correct state
-; $CapsLock UP:: 
+; $CapsLock UP::
 ;   if (toggle=1) {
 ;   SetCapsLockState, Off
 ;   tooltip, OFF
